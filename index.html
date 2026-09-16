@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<!-- Memberitahu browser bahwa dokumen ini menggunakan standar HTML5. -->
+
+<html lang="id">
+<!-- Tag pembuka <html>, atribut lang="id" memberitahu browser/mesin pencari
+     bahwa konten halaman berbahasa Indonesia (membantu SEO & aksesibilitas). -->
+
+<head>
+<!-- Bagian <head> berisi metadata halaman, TIDAK tampil langsung di layar
+     (kecuali <title>, yang muncul di tab browser). -->
+
+<meta charset="UTF-8">
+<!-- Menentukan pengkodean karakter UTF-8, supaya simbol seperti ♥, ⏳, emoji
+     tampil dengan benar dan tidak menjadi karakter aneh. -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Mengatur skala tampilan di perangkat mobile agar lebar halaman
+     menyesuaikan lebar layar device (responsive). -->
+
+<title>The Naddy Gallery - Beranda</title>
+<!-- Output: teks ini muncul di tab/judul browser, bukan di dalam halaman. -->
+
+<link rel="stylesheet" href="css/style.css">
+<!-- Menghubungkan file CSS eksternal. Semua styling visual (warna, layout,
+     ukuran) di halaman ini datang dari file css/style.css. -->
+
+</head>
+<body>
+<!-- Bagian <body> berisi semua konten yang benar-benar tampil di layar pengguna. -->
+
+<header class="kepala">
+<!-- <header> = bagian atas halaman, class "kepala" memberi warna latar gelap
+     dan membuatnya "sticky" (menempel) di atas layar saat discroll (lihat CSS). -->
+
+<nav class="navigasi">
+<!-- <nav> = kontainer menu navigasi, class "navigasi" mengatur agar menu kiri
+     dan kanan berjajar horizontal (flex, space-between) di CSS. -->
+
+<div class="menu-kiri">
+<!-- Kontainer untuk link-link navigasi sebelah kiri (Beranda, Favorit, About). -->
+
+<a href="index.html" class="aktif">
+    Beranda
+</a>
+<!-- Link ke halaman ini sendiri (index.html). Output: teks "Beranda" tampil
+     di navbar dengan warna berbeda (class "aktif") karena ini halaman saat ini. -->
+
+<a href="html/favorit.html">
+    Favorit
+</a>
+<!-- Link menuju halaman favorit.html. Output: teks "Favorit" di navbar,
+     saat diklik akan membuka halaman daftar outfit favorit pengguna. -->
+
+<a href="html/about.html">
+    About
+</a>
+<!-- Link menuju halaman about.html. Output: teks "About" di navbar. -->
+</div>
+
+<div class="menu-kanan">
+<!-- Kontainer untuk kotak pencarian dan tombol akun di sisi kanan navbar. -->
+
+    <div class="pencarian">
+    <!-- Bungkus untuk ikon kaca pembesar + input pencarian, posisi relative
+         supaya ikon bisa diletakkan absolute di dalamnya (lihat CSS). -->
+
+        <span class="ikon-cari">🔍</span>
+        <!-- Output: ikon kaca pembesar tampil di sebelah kiri dalam kotak input,
+             hanya dekorasi visual, tidak interaktif. -->
+
+        <input
+            type="text"
+            id="input-pencarian"
+            placeholder="Cari outfit..."
+        >
+        <!-- Input teks untuk pencarian. id="input-pencarian" ini yang dibaca
+             oleh js/isi.js (variabel "cari") untuk memfilter outfit secara
+             real-time saat pengguna mengetik. Output: kotak teks di navbar
+             dengan placeholder abu-abu "Cari outfit..." sebelum diisi. -->
+
+    </div>
+
+    <button
+        id="tombol-login-nav"
+        class="akun-nav">
+        Login
+    </button>
+    <!-- Tombol akun di navbar. Teksnya "Login" ini hanya default awal,
+         nanti langsung diganti oleh JS (fungsi perbaruiAkun()) menjadi
+         "Sign In" atau "Hi, <nama>" tergantung status login pengguna.
+         Output: tombol di ujung kanan navbar. -->
+
+</div>
+
+</nav>
+
+</header>
+
+<section class="judul-website">
+<!-- Bagian judul besar website, class ini memberi latar coklat dan
+     padding di CSS. -->
+
+<h1>
+    THE NADDY GALLERY
+</h1>
+<!-- Output: judul besar "THE NADDY GALLERY" tampil di tengah, dengan
+     font serif dan warna emas (diatur di .judul-website h1 pada CSS). -->
+
+</section>
+
+<section class="bagian-kategori">
+<!-- Bagian menu kategori outfit, class ini memberi background gambar
+     logo berulang + overlay gelap (lihat .bagian-kategori di CSS). -->
+
+<h2>
+    Kategori Outfit
+</h2>
+<!-- Output: judul kecil "Kategori Outfit" di atas deretan tombol kategori. -->
+
+<div
+    id="menu-kategori"
+    class="menu-kategori">
+</div>
+<!-- Kontainer KOSONG ini adalah tempat JavaScript (fungsi buatKategori()
+     di isi.js) menyuntikkan tombol-tombol kategori secara dinamis
+     (misal: Semua, Casual, Formal, dst) setelah data API berhasil diambil.
+     Output: tombol-tombol kategori akan muncul di sini, tersusun rapi
+     memakai flexbox (lihat .menu-kategori di CSS). -->
+
+</section>
+
+<main>
+<!-- <main> = area konten utama halaman (semantik HTML5), berisi galeri outfit. -->
+
+<div
+    id="wadah-galeri"
+    class="wadah-galeri">
+</div>
+<!-- Kontainer KOSONG ini adalah tempat JavaScript (fungsi tampilkanData()
+     di isi.js) menyuntikkan seluruh kartu outfit (foto, judul, deskripsi,
+     tombol favorit) dalam bentuk grid. Sebelum data selesai diambil,
+     sempat berisi teks "⏳ Memuat outfit..." dari JS.
+     Output: di sinilah semua kartu outfit muncul, tersusun dalam
+     grid 5 kolom (menyesuaikan lebar layar, lihat media query di CSS). -->
+
+</main>
+
+<!-- ZOOM FOTO -->
+
+<div
+    id="zoom-foto"
+    class="zoom-foto">
+<!-- Kontainer modal untuk menampilkan foto dalam ukuran besar.
+     Secara default tersembunyi (display:none di CSS), baru muncul
+    klik
+<button
+    id="tutup-zoom"
+    class="tombol-tutup">
+    ×
+</button>
+<!-- Tombol × untuk menutup modal zoom. Output: lingkaran kecil
+     di pojok kanan atas overlay foto besar. -->
+
+<img
+    id="gambar-zoom"
+    src=""
+    alt="Foto Outfit">
+<!-- Tag gambar untuk menampilkan foto besar. src kosong pada awalnya,
+     akan diisi oleh JS (fungsi bukaFoto()) sesuai foto yang diklik user.
+    ini outputnya foto
+</div>
+
+<!-- NOTIFIKASI -->
+
+<div
+    id="notifikasi"
+    class="notifikasi">
+</div>
+<!-- Kontainer notifikasi, awalnya kosong dan tersembunyi (display:none).
+     JS (fungsi tampilkanPesan()) mengisi teksnya dan menambahkan class
+     "tampil" secara sementara. Output: kotak pesan singkat muncul
+     di bagian atas-tengah layar, misalnya "Sign In berhasil!". -->
+
+<!-- KEMBALI KE ATAS -->
+
+<button
+ id="kembali-atas"
+ class="kembali-atas">
+↑ </button>
+<!-- Tombol untuk scroll ke atas halaman. Tersembunyi secara default,
+     baru muncul (class "tampil" ditambah JS) setelah pengguna scroll
+     lebih dari 400px. Output: tombol bulat "↑" di pojok kanan bawah layar. -->
+
+<!-- ================================
+    UNTUK SIGN IN
+================================ -->
+
+<div
+    id="login"
+    class="kotak-modal">
+<!-- Kontainer modal Sign In, penuh 1 layar dengan latar gelap transparan
+     (CSS .kotak-modal), tersembunyi sampai class "tampil" ditambahkan JS. -->
+
+<div class="isi-modal">
+<!-- Kotak putih/coklat di tengah overlay, tempat semua isi form login berada. -->
+
+    <button
+        id="tutup-login"
+        class="tombol-tutup-login">
+        ×
+    </button>
+    <!-- Tombol × untuk menutup modal login. Output: lingkaran di pojok
+         kotak atas. -->
+
+    <h2>
+        Sign In
+    </h2>
+    <!-- Output: judul "Sign In" di bagian atas kotak modal. -->
+
+    <p class="info-login">
+        Login terlebih dahulu untuk menyukai foto.
+    </p>
+    <!-- Output: kalimat penjelas kecil di bawah judul modal. -->
+
+    <form id="form-login">
+    <!-- Form ini ditangani oleh JS (event "submit") untuk validasi
+         username/password dan proses login, TANPA reload halaman
+         (karena event.preventDefault() dipanggil di JS). -->
+
+        <input
+            type="text"
+            id="nama-login"
+            placeholder="Username"
+            minlength="3"
+            maxlength="20"
+            required>
+        <!-- Input username. Atribut minlength/maxlength/required adalah
+             validasi bawaan HTML (browser akan menolak submit jika
+             tidak sesuai), sebagai lapisan pertama sebelum validasi JS.
+             Output: kotak teks "Username" di dalam form. -->
+
+        <div class="password-box">
+        <!-- Bungkus khusus supaya tombol mata bisa diletakkan menempel
+             di dalam kotak input password (position:relative/absolute di CSS). -->
+
+            <input
+                type="password"
+                id="sandi-login"
+                placeholder="Password"
+                minlength="6"
+                maxlength="20"
+                required>
+            <!-- Input password, karakter disembunyikan (type="password")
+                 secara default. Output: kotak password dengan titik-titik
+                 saat mengetik. -->
+
+            <button
+                type="button"
+                id="lihat-password-login">
+                👁
+            </button>
+            <!-- Tombol mata untuk toggle tampil/sembunyi password ini,
+                 ditangani oleh fungsi lihatPassword() di JS.
+                 Output: ikon mata di dalam kotak password, di sisi kanan. -->
+
+        </div>
+
+        <button
+            type="submit"
+            class="tombol-login">
+            Sign In
+        </button>
+        <!-- Tombol submit form. Output: tombol coklat gelap "Sign In"
+             di bagian bawah form, memicu event "submit" di JS saat diklik. -->
+
+    </form>
+
+    <p class="link-daftar">
+    <!-- Output: baris kecil di bawah form, mengajak user pindah ke Sign Up. -->
+
+        Belum punya akun?
+
+        <button
+            id="buka-daftar"
+            class="tombol-daftar">
+            Sign Up
+        </button>
+        <!-- Tombol untuk membuka modal Sign Up, ditangani JS (bukaDaftarModal()).
+             Output: teks "Sign Up" berwarna terang, bisa diklik. -->
+
+    </p>
+
+</div>
+
+</div>
+
+<!-- ================================
+     MODAL SIGN UP
+================================ -->
+
+<div
+    id="daftar"
+    class="kotak-modal">
+<!-- Sama seperti modal login, tapi untuk proses pendaftaran akun baru.
+     Tersembunyi secara default, class "tampil" ditambahkan JS saat dibutuhkan. -->
+
+<div class="isi-modal">
+
+    <button
+        id="tutup-daftar"
+        class="tombol-tutup-login">
+        ×
+    </button>
+    <!-- Tombol × untuk menutup modal Sign Up. -->
+
+    <h2>
+        Sign Up
+    </h2>
+    <!-- Output: judul "Sign Up" di kotak modal ini. -->
+
+    <p class="info-login">
+        Buat akun terlebih dahulu.
+    </p>
+    <!-- Output: kalimat penjelas kecil di bawah judul. -->
+
+    <form id="form-daftar">
+    <!-- Form ini ditangani JS untuk validasi & membuat akun baru
+         (disimpan ke localStorage), tanpa reload halaman. -->
+
+        <input
+            type="text"
+            id="nama-daftar"
+            placeholder="Buat username"
+            minlength="3"
+            maxlength="20"
+            required>
+        <!-- Input untuk membuat username baru. Output: kotak teks
+             "Buat username" di form Sign Up. -->
+
+        <div class="password-box">
+
+            <input
+                type="password"
+                id="sandi-daftar"
+                placeholder="Buat password"
+                minlength="6"
+                maxlength="20"
+                required>
+            <!-- Input untuk membuat password baru. -->
+
+            <button
+                type="button"
+                id="lihat-password-daftar">
+                👁
+            </button>
+            <!-- Tombol mata untuk toggle tampilan password ini. -->
+
+        </div>
+
+        <div class="password-box">
+
+            <input
+                type="password"
+                id="ulangi-sandi"
+                placeholder="Ulangi password"
+                minlength="6"
+                maxlength="20"
+                required>
+            <!-- Input untuk mengulangi/konfirmasi password, dicocokkan
+                 dengan input password utama di JS. -->
+
+            <button
+                type="button"
+                id="lihat-password-ulangi">
+                👁
+            </button>
+            <!-- Tombol mata untuk toggle tampilan input ulangi password. -->
+
+        </div>
+
+        <button
+            type="submit"
+            class="tombol-login">
+            Sign Up
+        </button>
+        <!-- Tombol submit form Sign Up, memicu proses validasi &
+             pembuatan akun di JS. Output: tombol coklat gelap "Sign Up". -->
+
+    </form>
+
+    <p class="link-daftar">
+
+        Sudah punya akun?
+
+        <button
+            id="kembali-login"
+            class="tombol-daftar">
+            Sign In
+        </button>
+        <!-- Tombol untuk kembali ke modal Sign In (fungsi JS terkait). -->
+
+    </p>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+<!-- Bagian paling bawah halaman, berisi info hak cipta. -->
+
+<p>
+    ©2026 The Naddy Gallery
+</p>
+<!-- Output: teks hak cipta tampil di tengah bawah halaman. -->
+
+<p>
+    Galeri inspirasi outfit
+</p>
+<!-- Output: tagline singkat di bawah teks hak cipta. -->
+
+</footer>
+
+<script src="js/isi.js"></script>
+<!-- Memuat file JavaScript utama. Diletakkan di akhir <body> supaya
+     seluruh elemen HTML di atas sudah ada di DOM sebelum JS mencoba
+     mengambilnya dengan document.getElementById(). Inilah file yang
+     menjalankan SEMUA logika interaktif: fetch API, filter, favorit,
+     login, zoom foto, dan notifikasi. -->
+
+</body>
+</html>

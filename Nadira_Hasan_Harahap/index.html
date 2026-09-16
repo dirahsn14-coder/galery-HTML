@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Naddy Gallery - Beranda</title>
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<header class="kepala">
+
+<nav class="navigasi">
+
+<div class="menu-kiri">
+
+<a href="index.html" class="aktif">
+    Beranda
+</a>
+
+<a href="html/favorit.html">
+    Favorit
+</a>
+
+<a href="html/about.html">
+    About
+</a>
+</div>
+
+<div class="menu-kanan">
+
+    <div class="pencarian">
+
+        <span class="ikon-cari">🔍</span>
+
+        <input
+            type="text"
+            id="input-pencarian"
+            placeholder="Cari outfit..."
+        >
+
+    </div>
+
+    <button
+        id="tombol-login-nav"
+        class="akun-nav">
+        Login
+    </button>
+
+</div>
+
+</nav>
+
+</header>
+
+<section class="judul-website">
+
+<h1>
+    THE NADDY GALLERY
+</h1>
+
+</section>
+
+<section class="bagian-kategori">
+
+<h2>
+    Kategori Outfit
+</h2>
+
+<div
+    id="menu-kategori"
+    class="menu-kategori">
+</div>
+
+</section>
+
+<main>
+
+<div
+    id="wadah-galeri"
+    class="wadah-galeri">
+</div>
+
+</main>
+
+<!-- ZOOM FOTO -->
+
+<div
+    id="zoom-foto"
+    class="zoom-foto">
+
+<button
+    id="tutup-zoom"
+    class="tombol-tutup">
+    ×
+</button>
+
+<img
+    id="gambar-zoom"
+    src=""
+    alt="Foto Outfit">
+
+</div>
+
+<!-- NOTIFIKASI -->
+
+<div
+    id="notifikasi"
+    class="notifikasi">
+</div>
+
+<!-- KEMBALI KE ATAS -->
+
+<button
+ id="kembali-atas"
+ class="kembali-atas">
+↑ </button>
+
+<!-- ================================
+    UNTUK SIGN IN
+================================ -->
+
+<div
+    id="login"
+    class="kotak-modal">
+
+<div class="isi-modal">
+
+    <button
+        id="tutup-login"
+        class="tombol-tutup-login">
+        ×
+    </button>
+
+    <h2>
+        Sign In
+    </h2>
+
+    <p class="info-login">
+        Login terlebih dahulu untuk menyukai foto.
+    </p>
+
+    <form id="form-login">
+
+        <input
+            type="text"
+            id="nama-login"
+            placeholder="Username"
+            minlength="3"
+            maxlength="20"
+            required>
+
+        <div class="password-box">
+
+            <input
+                type="password"
+                id="sandi-login"
+                placeholder="Password"
+                minlength="6"
+                maxlength="20"
+                required>
+
+            <button
+                type="button"
+                id="lihat-password-login">
+                👁
+            </button>
+
+        </div>
+
+        <button
+            type="submit"
+            class="tombol-login">
+            Sign In
+        </button>
+
+    </form>
+
+    <p class="link-daftar">
+
+        Belum punya akun?
+
+        <button
+            id="buka-daftar"
+            class="tombol-daftar">
+            Sign Up
+        </button>
+
+    </p>
+
+</div>
+
+</div>
+
+<!-- ================================
+     MODAL SIGN UP
+================================ -->
+
+<div
+    id="daftar"
+    class="kotak-modal">
+
+<div class="isi-modal">
+
+    <button
+        id="tutup-daftar"
+        class="tombol-tutup-login">
+        ×
+    </button>
+
+    <h2>
+        Sign Up
+    </h2>
+
+    <p class="info-login">
+        Buat akun terlebih dahulu.
+    </p>
+
+    <form id="form-daftar">
+
+        <input
+            type="text"
+            id="nama-daftar"
+            placeholder="Buat username"
+            minlength="3"
+            maxlength="20"
+            required>
+
+        <div class="password-box">
+
+            <input
+                type="password"
+                id="sandi-daftar"
+                placeholder="Buat password"
+                minlength="6"
+                maxlength="20"
+                required>
+
+            <button
+                type="button"
+                id="lihat-password-daftar">
+                👁
+            </button>
+
+        </div>
+
+        <div class="password-box">
+
+            <input
+                type="password"
+                id="ulangi-sandi"
+                placeholder="Ulangi password"
+                minlength="6"
+                maxlength="20"
+                required>
+
+            <button
+                type="button"
+                id="lihat-password-ulangi">
+                👁
+            </button>
+
+        </div>
+
+        <button
+            type="submit"
+            class="tombol-login">
+            Sign Up
+        </button>
+
+    </form>
+
+    <p class="link-daftar">
+
+        Sudah punya akun?
+
+        <button
+            id="kembali-login"
+            class="tombol-daftar">
+            Sign In
+        </button>
+
+    </p>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<p>
+    ©2026 The Naddy Gallery
+</p>
+
+<p>
+    Galeri inspirasi outfit
+</p>
+
+</footer>
+
+<script src="js/isi.js"></script>
+
+</body>
+</html>

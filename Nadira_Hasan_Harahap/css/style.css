@@ -1,0 +1,839 @@
+/* ========================================
+   PENGATURAN DASAR HALAMAN
+   Mengatur ukuran elemen, jarak, dan
+   perilaku scroll halaman.
+======================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #3d2e23;
+    color: #4b382c;
+}
+
+
+/* ========================================
+   HEADER DAN NAVIGASI
+   Header berada di bagian atas halaman
+   dan tetap terlihat saat halaman discroll.
+======================================== */
+
+.kepala {
+    width: 100%;
+    background-color: #2b2019;
+    padding: 16px 30px;
+    border-bottom: 1px solid #7b5c41;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navigasi {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* Menu sebelah kiri */
+
+.menu-kiri {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.menu-kiri a {
+    text-decoration: none;
+    color: #c9a24d;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.menu-kiri a:hover {
+    color: #ffffff;
+}
+
+.menu-kiri a.aktif {
+    color: #d9b26b;
+}
+
+
+/* ========================================
+   BAGIAN KANAN NAVIGASI
+   Berisi pencarian dan tombol akun.
+======================================== */
+
+.menu-kanan {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* Kotak pencarian */
+
+.pencarian {
+    position: relative;
+    width: 230px;
+}
+
+
+/* Ikon pencarian */
+
+.ikon-cari {
+    position: absolute;
+    left: 13px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+}
+
+
+/* Input pencarian */
+
+#input-pencarian {
+    width: 100%;
+    padding: 9px 15px 9px 40px;
+    border: 1px solid #c79d61;
+    border-radius: 20px;
+    background-color: #fffaf2;
+    color: #2b2019;
+    font-size: 14px;
+}
+
+#input-pencarian::placeholder {
+    color: #80644b;
+}
+
+#input-pencarian:focus {
+    border-color: #f0c978;
+    outline: none;
+}
+
+
+/* ========================================
+   TOMBOL LOGIN DI NAVBAR
+======================================== */
+
+.akun-nav {
+    padding: 8px 4px;
+    border: none;
+    background-color: transparent;
+    color: #d5b56a;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.akun-nav:hover {
+    color: white;
+}
+
+
+/* ========================================
+   JUDUL WEBSITE
+   Menampilkan nama utama website.
+======================================== */
+
+.judul-website {
+    background-color: #5d4632;
+    text-align: center;
+    padding: 45px 20px 40px;
+}
+
+.judul-website h1 {
+    font-family: Georgia, serif;
+    font-size: 38px;
+    letter-spacing: 5px;
+    color: #c9a24d;
+}
+
+.judul-website p {
+    color: #f2e6d8;
+    margin-top: 10px;
+}
+
+
+/* ========================================
+   KATEGORI OUTFIT
+   Menampilkan tombol kategori menggunakan
+   Flexbox agar dapat menyesuaikan layar.
+======================================== */
+
+/* ========================================
+   KATEGORI OUTFIT
+   Menampilkan tombol kategori menggunakan
+   Flexbox agar dapat menyesuaikan layar.
+======================================== */
+
+.bagian-kategori {
+    position: relative;
+    background-image: url("../aset/logo.jpg");
+    background-size: 300px auto;
+    background-repeat: repeat;
+    background-position: center;
+    padding: 22px 5% 25px;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+/* Lapisan gelap di atas foto */
+.bagian-kategori::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+/* Isi kategori berada di atas background */
+.bagian-kategori > * {
+    position: relative;
+    z-index: 1;
+}
+
+.bagian-kategori h2 {
+    text-align: center;
+    font-size: 19px;
+    margin-bottom: 16px;
+    color: #a58256;
+}
+
+.menu-kategori {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+
+/* Tombol kategori */
+
+.tombol-kategori {
+    padding: 8px 15px;
+    background-color: #c9a24d;
+    color: #fff7ec;
+    border: 1px solid #c9a24d;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.tombol-kategori:hover {
+    background-color: #a58256;
+}
+
+.tombol-kategori.aktif {
+    background-color: #d9b26b;
+    color: white;
+}
+
+/* ========================================
+   GALERI
+   Menggunakan CSS Grid untuk menyusun
+   kartu outfit.
+======================================== */
+
+.wadah-galeri {
+    width: 92%;
+    max-width: 1250px;
+    margin: 25px auto 40px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+}
+
+
+/* ========================================
+   KARTU OUTFIT
+======================================== */
+
+.kartu {
+    background-color: #5d4632;
+    border: 2px solid #c9a24d;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ========================================
+   FOTO OUTFIT
+   Foto memenuhi bagian kartu tanpa
+   tambahan jarak di sekeliling gambar.
+======================================== */
+
+.kotak-gambar {
+    width: 100%;
+    background-color: #a58256;
+    overflow: hidden;
+    cursor: pointer;
+    line-height: 0;
+}
+
+.kotak-gambar img {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+}
+
+
+/* Efek saat mouse berada di atas foto */
+
+.kotak-gambar:hover img {
+    filter: brightness(65%);
+}
+
+
+/* ========================================
+   ISI KARTU
+======================================== */
+
+.isi-kartu {
+    padding: 7px 10px 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.kartu h2 {
+    font-size: 16px;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    color: #c9a24d;
+}
+
+.kartu p {
+    color: #fffaf2;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.teks-style {
+    margin-top: 4px;
+    font-weight: bold;
+}
+
+
+/* ========================================
+   TOMBOL FAVORIT
+======================================== */
+
+.tombol-favorit {
+    width: 100%;
+    padding: 8px;
+    margin-top: 7px;
+    background-color: #a58256;
+    color: #c0392b;
+    border: 1px solid #d39b96;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.tombol-favorit:hover {
+    background-color: #f4deda;
+}
+
+.tombol-favorit.sudah-favorit {
+    background-color: #c0392b;
+    color: white;
+    border-color: #c0392b;
+}
+
+
+/* ========================================
+   JUMLAH FAVORIT
+======================================== */
+
+.jumlah-favorit {
+    text-align: center;
+    color: #f3d39b;
+    font-size: 14px;
+    margin: 20px 0 0;
+}
+
+
+/* ========================================
+   PESAN KETIKA DATA KOSONG
+======================================== */
+
+.data-kosong {
+    width: 100%;
+    text-align: center;
+    color: #fff7ec;
+    padding: 50px 20px;
+    grid-column: 1 / -1;
+    justify-self: center;
+}
+
+
+/* ========================================
+   LOADING DATA API
+   Digunakan ketika data outfit sedang
+   diambil dari REST API.
+======================================== */
+
+.memuat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    color: #f3d39b;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+/* ========================================
+   NOTIFIKASI
+   Menampilkan pesan seperti berhasil
+   login atau menambahkan favorit.
+======================================== */
+
+.notifikasi {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2b2019;
+    color: #e0c27a;
+    padding: 13px 25px;
+    border: 1px solid #c79d61;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 7000;
+    display: none;
+}
+
+.notifikasi.tampil {
+    display: block;
+}
+
+
+/* ========================================
+   MODAL LOGIN DAN SIGN UP
+======================================== */
+
+.kotak-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 6000;
+}
+
+.kotak-modal.tampil {
+    display: flex;
+}
+
+
+/* Kotak isi modal */
+
+.isi-modal {
+    width: 400px;
+    max-width: 100%;
+    background-color: #5d4632;
+    border-radius: 14px;
+    padding: 30px;
+    position: relative;
+}
+
+.isi-modal h2 {
+    text-align: center;
+    margin-bottom: 8px;
+    color: #fff7ec;
+    font-size: 26px;
+}
+
+.info-login {
+    text-align: center;
+    color: #f2e6d8;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+
+/* ========================================
+   INPUT LOGIN DAN SIGN UP
+======================================== */
+
+.isi-modal input {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 12px;
+    border: 1px solid #c79d61;
+    border-radius: 7px;
+    background-color: #8f6c48;
+    color: #fff7ec;
+    font-size: 14px;
+}
+
+.isi-modal input::placeholder {
+    color: #ead7c1;
+}
+
+
+/* ========================================
+   FORM
+======================================== */
+
+.isi-modal form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ========================================
+   PASSWORD BOX
+   Digunakan untuk menempatkan tombol
+   lihat password di dalam input.
+======================================== */
+
+.password-box {
+    position: relative;
+    width: 100%;
+}
+
+.password-box input {
+    width: 100%;
+    padding-right: 45px;
+}
+
+.password-box button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ========================================
+   TOMBOL LOGIN
+======================================== */
+
+.tombol-login {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 7px;
+    background-color: #2b2019;
+    color: #f3d39b;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tombol-login:hover {
+    background-color: #805d43;
+}
+
+
+/* ========================================
+   LINK SIGN UP / SIGN IN
+======================================== */
+
+.link-daftar {
+    text-align: center;
+    margin-top: 18px;
+    color: #f2e6d8;
+    font-size: 14px;
+}
+
+.tombol-daftar {
+    border: none;
+    background-color: transparent;
+    color: #fff7ec;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* ========================================
+   TOMBOL TUTUP MODAL
+======================================== */
+
+.tombol-tutup-login {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    border-radius: 50%;
+    background-color: #a58256;
+    color: #2b2019;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+/* ========================================
+   ZOOM FOTO
+   Digunakan untuk menampilkan foto dalam
+   ukuran yang lebih besar.
+======================================== */
+
+.zoom-foto {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.88);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    z-index: 5000;
+}
+
+.zoom-foto.tampil {
+    display: flex;
+}
+
+.zoom-foto img {
+    max-width: 95%;
+    max-height: 92%;
+    width: auto;
+    height: auto;
+}
+
+
+/* Tombol tutup zoom */
+
+.tombol-tutup {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background-color: #5d4632;
+    color: #fff7ec;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.tombol-tutup:hover {
+    background-color: #a58256;
+}
+
+
+/* ========================================
+   SAAT MODAL TERBUKA
+   Mencegah halaman belakang ikut discroll.
+======================================== */
+
+body.modal-terbuka {
+    overflow: hidden;
+}
+
+
+/* ========================================
+   BAGIAN ABOUT
+======================================== */
+
+.bagian-about {
+    width: 85%;
+    max-width: 850px;
+    margin: 45px auto;
+    padding: 25px;
+    background-color: #a58256;
+    border: 2px solid #c79d61;
+    border-radius: 12px;
+}
+
+.bagian-about h2 {
+    margin-bottom: 13px;
+    color: #fff7ec;
+    font-size: 20px;
+}
+
+.bagian-about p {
+    color: #f2e6d8;
+    line-height: 1.7;
+    margin-bottom: 13px;
+}
+
+
+/* ========================================
+   TOMBOL KEMBALI KE ATAS
+======================================== */
+
+.kembali-atas {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    width: 45px;
+    height: 45px;
+    border: 1px solid #c79d61;
+    border-radius: 50%;
+    background-color: #2b2019;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 2000;
+    display: none;
+}
+
+.kembali-atas.tampil {
+    display: block;
+}
+
+.kembali-atas:hover {
+    background-color: #c9a24d;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer {
+    background-color: #2b2019;
+    text-align: center;
+    padding: 25px 15px;
+    border-top: 1px solid #7b5c41;
+    color: #d5b56a;
+    font-size: 13px;
+}
+
+.footer p {
+    margin-bottom: 6px;
+}
+
+.footer p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ========================================
+   TAMPILAN PASSWORD DAN INPUT
+   Menyesuaikan tampilan tombol mata.
+======================================== */
+
+.password-box button {
+    color: #fff7ec;
+}
+
+
+/* ========================================
+   RESPONSIVE - TABLET
+======================================== */
+
+@media (max-width: 1000px) {
+
+    .wadah-galeri {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+/* ========================================
+   RESPONSIVE - TABLET KECIL
+======================================== */
+
+@media (max-width: 750px) {
+
+    .wadah-galeri {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .menu-kiri {
+        gap: 18px;
+    }
+
+    .pencarian {
+        width: 190px;
+    }
+}
+
+
+/* ========================================
+   RESPONSIVE - HANDPHONE
+======================================== */
+
+@media (max-width: 550px) {
+
+    .kepala {
+        padding: 14px 16px;
+    }
+
+    .navigasi {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .menu-kiri {
+        gap: 12px;
+    }
+
+    .menu-kiri a {
+        font-size: 13px;
+    }
+
+    .menu-kanan {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .pencarian {
+        width: 150px;
+    }
+
+    #input-pencarian {
+        font-size: 12px;
+    }
+
+    .akun-nav {
+        font-size: 13px;
+    }
+
+    .judul-website h1 {
+        font-size: 27px;
+        letter-spacing: 3px;
+    }
+
+    .wadah-galeri {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        width: 94%;
+    }
+
+    .kartu h2 {
+        font-size: 14px;
+    }
+
+    .kartu p {
+        font-size: 12px;
+    }
+}
+
