@@ -1,11 +1,16 @@
-📖 Web Portal Doa & Dzikir Harian
-Aplikasi web interaktif bertema Islami yang menyajikan kumpulan doa harian, dzikir, konten video panduan/edukasi, serta fitur penanda doa favorit. Proyek ini dibangun menggunakan web stack fundamental (HTML5, CSS3, dan JavaScript Modern) dengan struktur modular yang rapi dan responsif.
+THE NADDY GALLERY
 
-📑 Daftar Isi
-Fitur Utama
-Struktur Proyek
-Penjelasan Halaman & Fungsionalitas
+Website galeri inspirasi outfit yang menampilkan berbagai gaya fashion secara modern dan interaktif.
+
+Daftar Isi
+Tentang Project
+Tujuan Project
+Fitur
+Kategori Outfit
 Teknologi yang Digunakan
-Panduan Instalasi & Menjalankan
-Catatan Teknis & Pengembangan
-Penulis
+Struktur Folder
+Halaman Website
+REST API
+Penyimpanan Data
+Cara Menjalankan Project
+Pengembang
