@@ -370,7 +370,7 @@ function buatKategori() {
     const semuaKategori = [];
 
 
-    /* Mengambil kategori dari setiap outfit. */
+    /* ambil kategori. */
 
     // Melakukan perulangan pada setiap item di dataOutfit.
     dataOutfit.forEach(function (outfit) {
